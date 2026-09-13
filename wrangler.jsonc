@@ -1,0 +1,36 @@
+{
+  "$schema": "./cloudflare/node_modules/wrangler/config-schema.json",
+  "name": "sub-store-cloudflare",
+  "main": "cloudflare/src/index.ts",
+  "workers_dev": true,
+  "compatibility_date": "2026-07-08",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": "frontend/dist",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": true
+  },
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1
+  },
+  "secrets": {
+    "required": [
+      "SUB_STORE_ADMIN_TOKEN",
+      "SUB_STORE_PUBLIC_DOWNLOAD_TOKEN"
+    ]
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "sub-store-cloudflare",
+      "database_id": "39e3330c-c846-4e45-8953-99f8348faddb",
+      "migrations_dir": "cloudflare/migrations"
+    }
+  ],
+  "vars": {
+    "SUB_STORE_APP_NAME": "u7wvVaDv_sNTvS40o2JPEghKGDFneSESn550Y068TGo",
+    "SUB_STORE_PUBLIC_DOWNLOAD_HOSTS": "chNKtX9fkgnp2RpPpEf_8Mu2hjxc7VzqFtgf89iaudg"
+  }
+}
